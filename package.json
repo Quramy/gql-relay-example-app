@@ -9,12 +9,12 @@
     "generate:schema": "node --import=tsimp/import scripts/extractSchema.ts",
     "generate:prisma": "prisma generate",
     "generate:graphql": "npm run codegen",
-    "generate:relay": "relay-compiler",
+    "generate:relay": "npm run relay",
     "prestart": "tsc -p tsconfig.build.json",
     "start:server": "cross-env DATABASE_NAME=dev node --import=tsimp/import src/server.ts",
     "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\" \"npm run dev:relay\"",
     "dev:client": "vite",
-    "dev:relay": "relay-compiler --watch",
+    "dev:relay": "npm run relay -- --watch",
     "dev:server": "cross-env DATABASE_NAME=dev node --watch --import=tsimp/import src/server.ts",
     "migrate:dev": "cross-env DATABASE_NAME=dev prisma migrate dev",
     "migrate:dev:reset": "cross-env DATABASE_NAME=dev prisma migrate reset",
@@ -25,7 +25,7 @@
     "compile": "tsc --noEmit",
     "format": "prettier . --write",
     "codegen": "graphql-codegen-esm --config codegen.yml",
-    "relay": "relay-compiler"
+    "relay": "node node_modules/relay-compiler/cli.js"
   },
   "author": "Quramy",
   "license": "MIT",
@@ -49,6 +49,7 @@
     "jest-environment-node": "^29.2.2",
     "prettier": "^2.8.0",
     "prisma": "^5.0.0",
+    "relay-compiler": "^18.0.0",
     "rimraf": "^6.0.1",
     "ts-jest": "^29.0.3",
     "tsimp": "^2.0.11",
@@ -64,7 +65,6 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-relay": "^18.0.0",
-    "relay-compiler": "^18.0.0",
     "relay-runtime": "^18.0.0"
   }
 }
