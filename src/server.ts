@@ -20,16 +20,19 @@ const tracedSchema = traceSchema({
 });
 
 const yoga = createYoga({
-  schema: tracedSchema,
+  schema,
   context(initialContext) {
     const loaders = createLoaders({ prisma });
     const context: ServerContext = {
       ...initialContext,
       prisma,
       loaders,
-      GraphQLDebuggerContext: new GraphQLDebuggerContext(),
+      // GraphQLDebuggerContext: new GraphQLDebuggerContext(),
     };
     return context;
+  },
+  cors: {
+    origin: ["http://localhost:4000", "http://localhost:5173"]
   },
 });
 
