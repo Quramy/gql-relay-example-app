@@ -6,7 +6,7 @@ generates:
     plugins:
       - typescript
       - add:
-          content: 'import { BaseContext } from "../types.js";'
+          content: 'import type { BaseContext } from "../types.js";'
       - typescript-resolvers
     config:
       contextType: BaseContext
