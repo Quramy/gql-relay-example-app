@@ -1,12 +1,15 @@
-# Prisma Yoga example
+# GraphQL Relay example app
 
 This repository the following examples:
 
-- [Prisma ORM](https://www.prisma.io) using PostgreSQL
-- GraphQL API server via [graphql-yoga](https://the-guild.dev/graphql/yoga-server)
-  - [Code genenerator for typescript-resover](https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-resolvers)
-  - [DataLoader](https://github.com/graphql/dataloader)
-- And Jest test suites integrated to RDB
+- Server:
+  - [Prisma ORM](https://www.prisma.io) using PostgreSQL
+  - GraphQL API server via [graphql-yoga](https://the-guild.dev/graphql/yoga-server)
+    - [Code genenerator for typescript-resover](https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-resolvers)
+    - [DataLoader](https://github.com/graphql/dataloader)
+  - And Jest test suites integrated to RDB
+- Client:
+  - [React Relay](https://relay.dev/)
 
 ## Setup
 
@@ -16,13 +19,14 @@ $ npm i
 $ cp .env.example .env
 ```
 
-## Start GraphQL Server
+## Start Dev Server
 
 ```sh
 $ npm run migrate:dev
 $ npm run seed
-$ npm start
-$ open http://localhost:4000/graphql
+$ npm run dev
+$ oepn http://localhost:5173 # Open Client Application
+$ open http://localhost:4000/graphql # Open GraphQL Playground
 ```
 
 ## Run test
@@ -31,10 +35,6 @@ $ open http://localhost:4000/graphql
 $ npm run migrate:test
 $ npm test
 ```
-
-## Debugging
-
-Issue a query in GraphQL Playground, then visit http://localhost:16686 to debug using [GraphQL Debugger](https://graphql-debugger.com/).
 
 ## License
 
