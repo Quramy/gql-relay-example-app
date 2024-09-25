@@ -1,6 +1,7 @@
 import { Query } from "../../src/resolvers/query.js";
 import { PostFactory, CommentFactory } from "../factories/index.js";
 import { createStubContext } from "../stubContext.js";
+import { encodeId } from "../../src/resolvers/nodeId";
 
 describe("Query resolver", () => {
   describe("posts field", () => {
@@ -33,11 +34,11 @@ describe("Query resolver", () => {
       beforeEach(async () => await PostFactory.create({ id: "sample_post" }));
 
       it("resolves null", async () => {
-        await expect(subject("not_existing_post_id")).resolves.toBeNull();
+        await expect(subject(encodeId("Post", { id: "not_existing_post_id" }))).resolves.toBeNull();
       });
 
       it("resolves an object", async () => {
-        await expect(subject("sample_post")).resolves.toMatchObject({ id: "sample_post" });
+        await expect(subject(encodeId("Post", { id: "sample_post" }))).resolves.toMatchObject({ id: "sample_post" });
       });
     });
   });

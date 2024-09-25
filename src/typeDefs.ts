@@ -1,12 +1,16 @@
 export const typeDefs = /* GraphQL */ `
-  type Post {
+  interface Node {
+    id: ID!
+  }
+
+  type Post implements Node {
     id: ID!
     title: String!
     body: String!
     comments: [Comment!]!
   }
 
-  type Comment {
+  type Comment implements Node {
     id: ID!
     body: String!
   }
@@ -14,5 +18,6 @@ export const typeDefs = /* GraphQL */ `
   type Query {
     posts: [Post!]!
     post(id: ID!): Post
+    node(id: ID!): Node
   }
 `;
